@@ -1,0 +1,74 @@
+<!doctype html>
+<html lang="es">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Oficina de Skills</title>
+  <link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🏢</text></svg>">
+  <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+  <div class="sky" aria-hidden="true"><div class="moon"></div><div class="stars"></div></div>
+
+  <header class="topbar">
+    <div class="brand">🏢 Oficina de <b>Skills</b></div>
+    <div class="status">
+      <span id="conn" class="conn off" title="Conexión con el servidor">● Desconectado</span>
+      <button id="inbox-btn" class="inbox-btn" type="button">📥 Bandeja <span id="inbox-count" class="badge" hidden>0</span></button>
+    </div>
+  </header>
+
+  <main>
+    <section id="building" class="building" aria-label="Edificio de la oficina"></section>
+    <div class="street" aria-hidden="true"></div>
+  </main>
+
+  <aside id="panel" class="panel" hidden aria-live="polite">
+    <button id="panel-close" class="panel-close" type="button" aria-label="Cerrar">✕</button>
+    <div id="panel-body"></div>
+  </aside>
+
+  <div id="toasts" class="toasts" aria-live="polite"></div>
+
+  <template id="tpl-chat">
+    <div class="chat">
+      <header class="chat-head">
+        <div class="avatar big"></div>
+        <div>
+          <h2 class="chat-title"></h2>
+          <div class="chat-meta"></div>
+        </div>
+      </header>
+      <details class="chat-desc"><summary>¿Qué hace esta skill?</summary><p></p></details>
+      <div class="messages"></div>
+      <div class="working" hidden><span class="dots"><i></i><i></i><i></i></span> <span class="working-text">Trabajando…</span> <button class="link cancel" type="button">Cancelar</button></div>
+      <form class="composer">
+        <textarea rows="3" placeholder="Escribe una orden para esta skill… (Ctrl+Enter para enviar)"></textarea>
+        <div class="composer-actions">
+          <button class="link reset" type="button" title="Archiva esta conversación y empieza otra">Nueva conversación</button>
+          <button class="primary" type="submit">Enviar</button>
+        </div>
+      </form>
+    </div>
+  </template>
+
+  <template id="tpl-inbox">
+    <div class="inbox">
+      <header class="inbox-head">
+        <div class="avatar big director-avatar">👔</div>
+        <div>
+          <h2>Despacho de Dirección</h2>
+          <div class="chat-meta">Director: <button class="link director-name" type="button" title="Cambiar nombre"></button></div>
+        </div>
+      </header>
+      <nav class="tabs">
+        <button type="button" data-filter="pendiente" class="active">Pendientes</button>
+        <button type="button" data-filter="todas">Historial</button>
+      </nav>
+      <div class="proposals"></div>
+    </div>
+  </template>
+
+  <script src="app.js" type="module"></script>
+</body>
+</html>
